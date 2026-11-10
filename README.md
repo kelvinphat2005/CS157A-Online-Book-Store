@@ -50,3 +50,13 @@ python3.14 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+## Running Locally (Development)
+
+```
+flask --app wsgi run --debug
+```
+
+### Project layout
+- `wsgi.py`: entry point used by Flask and by Apache or Gunicorn
+- `config.py`: application settings
