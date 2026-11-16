@@ -6,8 +6,12 @@
 -- ============================================================
 -- 1. Authors - Nishan
 -- ============================================================
--- Paste the complete CREATE TABLE Authors statement here.
--- Expected columns: author_id (primary key), name.
+CREATE TABLE Authors(
+    author_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+
+    PRIMARY KEY(author_id)
+);
 
 
 
