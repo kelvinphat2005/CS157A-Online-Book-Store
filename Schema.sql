@@ -6,8 +6,12 @@
 -- ============================================================
 -- 1. Authors - Nishan
 -- ============================================================
--- Paste the complete CREATE TABLE Authors statement here.
--- Expected columns: author_id (primary key), name.
+CREATE TABLE Authors(
+    author_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+
+    PRIMARY KEY(author_id)
+);
 
 
 
@@ -89,8 +93,30 @@ CREATE TABLE OrderLine (
 -- ============================================================
 -- 6. Reviews - Nishan
 -- ============================================================
--- Paste the complete CREATE TABLE Reviews statement here.
--- Expected columns: review_id (primary key), book_id (foreign key),
---                   member_id (foreign key), rating, review_text.
--- Books and Members must be created before Reviews.
+
+CREATE TABLE Reviews (
+    review_id INT NOT NULL,
+    book_id INT NOT NULL,
+    member_id INT NOT NULL,
+    rating TINYINT NOT NULL,
+    review_text TEXT NOT NULL,
+
+    PRIMARY KEY (review_id),
+
+    CONSTRAINT fk_reviews_book
+        FOREIGN KEY (book_id) REFERENCES Books(book_is)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_reviews_member
+        FOREIGN KEY (member_id) References Members(member_id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT uq_reviews_member_book
+        UNIQUE (member_id, book_id),
+
+    CONSTRAINT chk_reviews_rating
+        CHECK (rating BETWEEN 1 AND 5)
+);
+
+
 
