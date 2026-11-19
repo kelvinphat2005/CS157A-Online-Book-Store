@@ -1,0 +1,56 @@
+Relational Schema 
+
+Authors(author_id, name)
+PK: author_id
+
+Books(book_id, title, publisher, price, summary, stock, is_active, author_id)
+PK: book_id
+FK: author_id
+
+Members(member_id, name, email, role, password_hash)
+PK: member_id
+
+Orders(order_id, member_id, delivery_address, status, total_cost)
+PK: order_id
+FK: member_id
+
+Reviews(review_id, book_id, member_id, rating, review_text)
+PK: review_id
+FK: book_id, member_id
+
+Orderline(order_id, book_id, quantity, price)
+PK: (order_id, book_id)
+FK: order_id
+FK: book_id
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For BCNF : 
+Authors 
+FD : author_id --> name
+Since author_id is the primary key its in BCNF.
+
+Books 
+FD: 
+book_id ---> title, publisher, price, summary, stock, is_active, author_id
+book_id is the primary key so this is in BCNF.
+
+Members 
+FD:
+member_is ---> name, email, role, password_hash
+member_id is the primary key so it is in BCNF
+
+Orders
+FD:
+order_id ---> member_id, delivery_address, status, total_cost
+Since order_id is primary key so its in BCNF
+
+Reviews
+FD:
+review_id ---> book_id, member_id, rating, review_text
+review_id is the primary key so its in BCNF
+
+OrderLine
+FD: 
+(order_id, book_id) ---> quantity, price
+(order_id, book_id) is the primary key and its in BCNF
