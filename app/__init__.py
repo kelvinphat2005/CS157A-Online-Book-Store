@@ -4,6 +4,9 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object("config")
 
+    from . import db
+    app.teardown_appcontext(db.close_db)
+
     from .routes import auth, books, orders, staff
 
     app.register_blueprint(auth.bp)
