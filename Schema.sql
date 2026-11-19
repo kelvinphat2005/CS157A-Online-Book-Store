@@ -18,21 +18,45 @@ CREATE TABLE Authors(
 -- ============================================================
 -- 2. Members - Kelvin
 -- ============================================================
--- Paste the complete CREATE TABLE Members statement here.
--- Expected columns: member_id (primary key), name, email (UNIQUE),
---                   password_hash, role.
--- member_id must be a signed INT to match Orders.member_id.
+
+CREATE TABLE Members (
+    member_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(10) NOT NULL DEFAULT 'customer',
+
+    PRIMARY KEY (member_id),
+
+    CONSTRAINT uq_members_email UNIQUE (email),
+
+    CONSTRAINT chk_members_role CHECK (role IN ('customer', 'admin'))
+);
 
 
 
 -- ============================================================
 -- 3. Books - Kelvin
 -- ============================================================
--- Paste the complete CREATE TABLE Books statement here.
--- Expected columns: book_id (primary key), title, author_id (foreign key),
---                   publisher, summary, stock, is_active, price.
--- book_id must be a signed INT to match OrderLine.book_id.
--- Authors must be created before Books.
+
+CREATE TABLE Books (
+    book_id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    author_id INT NOT NULL,
+    publisher VARCHAR(100),
+    summary TEXT,
+    stock INT NOT NULL DEFAULT 0,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    price DECIMAL(10, 2) NOT NULL,
+
+    PRIMARY KEY (book_id),
+
+    CONSTRAINT fk_books_author FOREIGN KEY (author_id) REFERENCES Authors(author_id) ON DELETE RESTRICT,
+
+    CONSTRAINT chk_books_stock CHECK (stock >= 0),
+
+    CONSTRAINT chk_books_price CHECK (price >= 0)
+);
 
 
 
