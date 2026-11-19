@@ -2,6 +2,14 @@
 -- Authors -> Books; Members -> Orders; Orders + Books -> OrderLine;
 -- Members + Books -> Reviews.
 
+-- drop existing tables so this script can be rerun.
+DROP TABLE IF EXISTS Reviews;
+DROP TABLE IF EXISTS OrderLine;
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Books;
+DROP TABLE IF EXISTS Members;
+DROP TABLE IF EXISTS Authors;
+
 
 -- ============================================================
 -- 1. Authors - Nishan
@@ -119,7 +127,7 @@ CREATE TABLE OrderLine (
 -- ============================================================
 
 CREATE TABLE Reviews (
-    review_id INT NOT NULL,
+    review_id INT NOT NULL AUTO_INCREMENT,
     book_id INT NOT NULL,
     member_id INT NOT NULL,
     rating TINYINT NOT NULL,
@@ -128,7 +136,7 @@ CREATE TABLE Reviews (
     PRIMARY KEY (review_id),
 
     CONSTRAINT fk_reviews_book
-        FOREIGN KEY (book_id) REFERENCES Books(book_is)
+        FOREIGN KEY (book_id) REFERENCES Books(book_id)
         ON DELETE CASCADE,
 
     CONSTRAINT fk_reviews_member
