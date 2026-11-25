@@ -1,0 +1,33 @@
+INSERT INTO Authors(author_id, name) VALUES
+(1, 'Veronica Haddon'),
+(2, 'Everett Ferguson'),
+(3, 'Mary Fabyan Windeatt'),
+(4,  'Allen Gersho'),
+(5, 'Fiona Cownie'),
+(6, 'Kenneth H. Cooper'),
+(7, 'Sonia Rivera-Valdes'),
+(8,  'Stefan Draminski'),
+(9, 'Kayode J. Fakinlede'),
+(10, 'Sydney Walker'),
+(11, 'Sue Walters'),
+(12, 'Evan Gerstmann'),
+(13, 'Jerry Baker'),
+(14, 'Mark Graham'),
+(15, 'Graham Robson');
+
+INSERT INTO Books (book_id, title, publisher, price, summary, stock, is_active, author_id) VALUES
+(1, 'Whispers of the Wicked Saints', 'iUniverse', 10.95, 'Julia Thomas finds her life spinning out of control after the death of her husband, Richard.', 20, True, 1),
+(2, 'The Church of Christ: A Biblical Ecclesiology for Today', 'Wm. B. Eerdmans Publishing', 25.97,'Respected biblical scholar Everett Ferguson presents a genuine biblical theology of the church.', 12, TRUE, 2),
+(3, 'Saint Hyacinth of Poland', 'Tan Books & Pub', 13.95, 'The story for children 10 and up of St. Hyacinth, the Dominican who planted the Faith in Poland, Lithuania and Russia and worked many miracles.', 30, TRUE, 3),
+(4, 'Vector Quantization and Signal Compression (The Springer International Series in Engineering and Computer Science)', 'Springer Science & Business Media', 76.94, 'This book is devoted to the theory and practice of signal compression, applied to signals such as speech, audio, images, and video.', 8, TRUE, 4),
+(5, 'The Ultimate Guide to Law School Admission: Insider Secrets for Getting a "Big Envelope" with Your Acceptance to Law School!', 'Bloomsbury Publishing', 14.95, 'This collection brings together a distinguished group of researchers to examine the power relations played out in university law schools.', 25, TRUE, 5),
+(6, 'Overcoming Hypertension (Dr. Kenneth H. Cooper''s Preventive Medicine Program)','Bantam', 23.00, 'Like a time bomb ticking away, hypertension builds quietly, gradually, placing unbearable strain on the body.', 18, TRUE, 6),
+(7, 'The Forbidden Stories of Marta Veneranda', 'Seven Stories Press', 21.95, 'Marta Veneranda, a Latina neoyorkina, finds that she inspires the confessional in people.', 15, TRUE, 7),
+(8, 'The Battleship Bismarck', 'Bloomsbury Publishing', 34.95, 'The Bismarck is perhaps the most famous and notorious warship ever built.', 10, TRUE, 8),
+(9, 'Beginner''s Yoruba (Hippocrene Beginner''s Series)', 'Hippocrene Books', 19.77, 'An introduction to the Yoruba language, spoken by over 30 million people in south-western Nigeria, parts of the Benin Republic, and Togo.', 22, TRUE, 9),
+(10, 'A Dose of Sanity: Mind, Medicine, and Misdiagnosis', 'Wiley', 30.00, 'Each year, hundreds of thousands of Americans suffering from common medical conditions are misdiagnosed with psychiatric disorders.', 14, TRUE, 10),
+(11, 'Pyrography Designs', 'Fox Chapel Publishing Company Incorporated', 13.19, 'This book offers 30 North American wildlife illustrations and 10 border designs to use in woodburning projects.', 35, TRUE, 11),
+(12, 'Academic Freedom after September 11', 'Stanford University Press', 22.95, 'This is a provocative examination of the current state of academic freedom in the United States and around the world.', 9, TRUE, 12),
+(13, 'The Impatient Gardener''s Lawn Book', 'Random House Digital, Inc.', 12.95, 'Explains how to grow a green, beautiful lawn and offers advice on fertilizers, watering, and lawn diseases.', 40, TRUE, 13),
+(14, 'Josef Fuchs on Natural Law (Moral Traditions series)', 'Georgetown University Press', 48.82, 'This is the first full-length analysis of Fuchs''s efforts to reconstruct Roman Catholic natural law theory.', 6, TRUE, 14),
+(15, 'Audi Quattro: The Complete Story', 'Veloce Publishing Ltd', 37.95, 'The Audi Quattro was the world''s first successful four-wheel-drive rally car.', 11, TRUE, 15);
