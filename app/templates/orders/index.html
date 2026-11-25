@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}My orders{% endblock %}
+{% block content %}
+<section class="container account-page">
+  <p class="eyebrow">YOUR BOOKSHELF, YOUR STORIES</p>
+  <div class="page-title-row"><h1>My orders</h1><span class="pill">Member account</span></div>
+  <p class="page-intro">Welcome, {{ session.get('name') }}.</p>
+  <div class="empty-state"><span class="empty-icon" aria-hidden="true">☷</span><h2>Your next chapter is on its way.</h2><p>Order history will be available here soon.</p><a class="button" href="{{ url_for('index') }}">Back to the bookstore <span aria-hidden="true">→</span></a></div>
+</section>
+{% endblock %}

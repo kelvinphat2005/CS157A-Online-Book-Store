@@ -60,3 +60,14 @@ flask --app wsgi run --debug
 ### Project layout
 - `wsgi.py`: entry point used by Flask and by Apache or Gunicorn
 - `config.py`: application settings
+
+
+## Authentication pages (Andy)
+
+The login and registration pages are now connected to the existing Flask-session
+backend. Orders requires login; staff pages require an admin account. Logout is a
+POST form with a CSRF token. See START_HERE_ANDY.md for Windows/macOS/Linux setup,
+local MySQL configuration, and the manual and automated test steps.
+
+The book catalog, order history, and staff management pages remain placeholders
+for future team features. This update does not change Schema.sql or add sample rows.

@@ -1,0 +1,18 @@
+{% extends "auth/_layout.html" %}
+{% from "auth/_fields.html" import field with context %}
+{% block title %}Create an account{% endblock %}
+{% block form_content %}
+<p class="eyebrow form-eyebrow">THERE'S A PLACE FOR YOU HERE</p>
+<h1 id="auth-heading">A fresh chapter.</h1>
+<p class="form-intro">Create your account. Make yourself at home.</p>
+{% if errors %}<div class="form-alert" role="alert">{{ errors.get('form', 'Please check the highlighted fields below.') }}</div>{% endif %}
+<form method="post" action="{{ url_for('auth.register') }}" class="auth-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  {{ field('name', 'Full name', value=name, maxlength=100, autocomplete='name') }}
+  {{ field('email', 'Email address', type='email', value=email, maxlength=255, autocomplete='email') }}
+  {{ field('password', 'Password', type='password', hint='Use 8–128 characters.', minlength=8, maxlength=128, autocomplete='new-password') }}
+  {{ field('confirm_password', 'Confirm password', type='password', minlength=8, maxlength=128, autocomplete='new-password') }}
+  <button type="submit" class="button button-full">Create account <span aria-hidden="true">→</span></button>
+</form>
+<p class="form-switch">Already part of the story? <a href="{{ url_for('auth.login') }}">Sign in</a></p>
+{% endblock %}

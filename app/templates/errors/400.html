@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Please try again{% endblock %}
+{% block content %}
+<section class="container account-page narrow-page">
+  <p class="eyebrow">LET'S TRY THAT AGAIN</p>
+  <h1>A small pause<br>in the story.</h1>
+  <p class="page-intro">{{ message }}</p>
+  <a class="button" href="{{ url_for('auth.login') }}">Go to sign in <span aria-hidden="true">→</span></a>
+</section>
+{% endblock %}

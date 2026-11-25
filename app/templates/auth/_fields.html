@@ -1,0 +1,19 @@
+{% macro field(name, label, type='text', value='', hint='', minlength=None, maxlength=None, autocomplete='off') %}
+<div class="form-field{% if errors.get(name) %} has-error{% endif %}">
+  <label for="{{ name }}">{{ label }}</label>
+  <div class="input-wrap{% if type == 'password' %} has-toggle{% endif %}">
+    <input id="{{ name }}" name="{{ name }}" type="{{ type }}" required
+      autocomplete="{{ autocomplete }}"
+      {% if type != 'password' %}value="{{ value }}"{% endif %}
+      {% if minlength is not none %}minlength="{{ minlength }}"{% endif %}
+      {% if maxlength is not none %}maxlength="{{ maxlength }}"{% endif %}
+      {% if errors.get(name) %}aria-invalid="true"{% endif %}
+      {% if hint or errors.get(name) %}aria-describedby="{% if hint %}{{ name }}-hint {% endif %}{% if errors.get(name) %}{{ name }}-error{% endif %}"{% endif %}>
+    {% if type == 'password' %}
+    <button type="button" class="password-toggle" data-password-toggle aria-controls="{{ name }}" aria-label="Show {{ label | lower }}" aria-pressed="false" data-field-label="{{ label | lower }}">Show</button>
+    {% endif %}
+  </div>
+  {% if hint %}<p class="field-hint" id="{{ name }}-hint">{{ hint }}</p>{% endif %}
+  {% if errors.get(name) %}<p class="field-error" id="{{ name }}-error">{{ errors[name] }}</p>{% endif %}
+</div>
+{% endmacro %}
