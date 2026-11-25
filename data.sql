@@ -15,6 +15,7 @@ INSERT INTO Authors(author_id, name) VALUES
 (14, 'Mark Graham'),
 (15, 'Graham Robson');
 
+
 INSERT INTO Books (book_id, title, publisher, price, summary, stock, is_active, author_id) VALUES
 (1, 'Whispers of the Wicked Saints', 'iUniverse', 10.95, 'Julia Thomas finds her life spinning out of control after the death of her husband, Richard.', 20, True, 1),
 (2, 'The Church of Christ: A Biblical Ecclesiology for Today', 'Wm. B. Eerdmans Publishing', 25.97,'Respected biblical scholar Everett Ferguson presents a genuine biblical theology of the church.', 12, TRUE, 2),
@@ -31,3 +32,21 @@ INSERT INTO Books (book_id, title, publisher, price, summary, stock, is_active, 
 (13, 'The Impatient Gardener''s Lawn Book', 'Random House Digital, Inc.', 12.95, 'Explains how to grow a green, beautiful lawn and offers advice on fertilizers, watering, and lawn diseases.', 40, TRUE, 13),
 (14, 'Josef Fuchs on Natural Law (Moral Traditions series)', 'Georgetown University Press', 48.82, 'This is the first full-length analysis of Fuchs''s efforts to reconstruct Roman Catholic natural law theory.', 6, TRUE, 14),
 (15, 'Audi Quattro: The Complete Story', 'Veloce Publishing Ltd', 37.95, 'The Audi Quattro was the world''s first successful four-wheel-drive rally car.', 11, TRUE, 15);
+
+
+INSERT INTO Members (member_id, name, email, password_hash, role) VALUES
+(1, 'Nishan Bhattarai', 'nishan.bhattarai@sjsu.edu', 'scrypt:32768:8:1$LumtRDNYE08b8p7j$eaa86a9f0e52fd33a40aa30ee6d3afc536eb1bb75328cfb8830a4a0f48557f169376b7eb0a9a7209d624991fc8cee5fe9ed8ac890d1cbd9d573f2a3105584371', 'admin'),
+(2, 'Kelvin Phat', 'kelvin.phat@sjsu.edu', 'scrypt:32768:8:1$LumtRDNYE08b8p7j$eaa86a9f0e52fd33a40aa30ee6d3afc536eb1bb75328cfb8830a4a0f48557f169376b7eb0a9a7209d624991fc8cee5fe9ed8ac890d1cbd9d573f2a3105584371', 'admin'),
+(3, 'Andy Martin Valencia', 'andy.martinvalencia@sjsu.edu', 'scrypt:32768:8:1$LumtRDNYE08b8p7j$eaa86a9f0e52fd33a40aa30ee6d3afc536eb1bb75328cfb8830a4a0f48557f169376b7eb0a9a7209d624991fc8cee5fe9ed8ac890d1cbd9d573f2a3105584371', 'admin'),
+(4, 'James Carter', 'james.carter@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(5, 'Maria Lopez',  'maria.lopez@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(6, 'Anthony Gordan', 'anthony.gordan@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(7, 'Pablo Gavi',   'pablo.gavi@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(8, 'Priya Sharma', 'priya.sharma@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(9, 'Dani Olmo', 'dani.olmo@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(10, 'Karim Adeyemi', 'karim.adeyemi@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(11, 'Joan Garcia', 'joan.garcia@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(12, 'Marc Bernal', 'marc.bernal@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(13, 'Lamin Yamal', 'lamin.yamal@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(14, 'Gerard Martin', 'gerard.martin@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
+(15, 'Pau Cubarsi', 'pau.cubarsi@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer');
