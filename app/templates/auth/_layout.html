@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container auth-wrap">
+  <section class="auth-shell" aria-labelledby="auth-heading">
+    <aside class="auth-aside">
+      <p class="eyebrow">THE NEXT CHAPTER IS YOURS</p>
+      <h2>A little wonder.<br>A world of stories.</h2>
+      {% include "_book_art.html" %}
+      <p class="aside-caption">Come for a book.<br>Stay for the possibilities.</p>
+    </aside>
+    <div class="auth-panel">
+      {% block form_content %}{% endblock %}
+      <div class="auth-panel-footer"><span aria-hidden="true">✧</span> A good story starts with you.</div>
+    </div>
+  </section>
+  <a class="back-home" href="{{ url_for('index') }}"><span aria-hidden="true">←</span> Back to the bookstore</a>
+</div>
+{% endblock %}

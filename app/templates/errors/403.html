@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Staff access required{% endblock %}
+{% block content %}
+<section class="container account-page narrow-page">
+  <p class="eyebrow">403 / STAFF ACCESS REQUIRED</p>
+  <h1>This chapter<br>is for staff.</h1>
+  <p class="page-intro">Your customer account doesn't have access to this page. You can still explore the bookstore and visit your orders.</p>
+  <div class="hero-actions"><a class="button" href="{{ url_for('index') }}">Back home <span aria-hidden="true">→</span></a><a class="text-link" href="{{ url_for('orders.index') }}">My orders</a></div>
+</section>
+{% endblock %}

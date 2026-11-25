@@ -5,3 +5,6 @@ __pycache__/
 .env
 *.kate-swp
 .DS_Store
+.pytest_cache/
+test-results/
+playwright-report/

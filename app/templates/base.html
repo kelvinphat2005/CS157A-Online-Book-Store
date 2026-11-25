@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173e35">
+  <title>{% block title %}Home{% endblock %} · Books, Books &amp; Books</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+  <script src="{{ url_for('static', filename='js/auth.js') }}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="Books, Books &amp; Books home">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+          <rect width="34" height="34" rx="9" fill="currentColor"/>
+          <path d="M7 9c4-1 7 0 10 2 3-2 6-3 10-2v16c-4-1-7 0-10 2-3-2-6-3-10-2V9Z" stroke="#fbf8f1" stroke-width="1.5"/>
+          <path d="M17 11v16" stroke="#fbf8f1" stroke-width="1.5"/>
+        </svg>
+        <span>Books, Books <span class="brand-amp">&amp;</span> Books</span>
+      </a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}aria-current="page"{% endif %}>Home</a>
+        <a href="{{ url_for('books.index') }}" {% if request.endpoint == 'books.index' %}aria-current="page"{% endif %}>Books</a>
+        {% if session.get('member_id') %}
+        <a href="{{ url_for('orders.index') }}" {% if request.endpoint == 'orders.index' %}aria-current="page"{% endif %}>My orders</a>
+        {% if session.get('role') == 'admin' %}
+        <a href="{{ url_for('staff.index') }}" {% if request.endpoint == 'staff.index' %}aria-current="page"{% endif %}>Staff</a>
+        {% endif %}
+        {% endif %}
+      </nav>
+      <div class="header-actions">
+        {% if session.get('member_id') %}
+        <span class="member-name" title="{{ session.get('name', '') }}">{{ session.get('name', 'My account') }}</span>
+        <form action="{{ url_for('auth.logout') }}" method="post" class="logout-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button class="button button-small button-outline" type="submit">Sign out</button>
+        </form>
+        {% else %}
+        <a class="text-link" href="{{ url_for('auth.login') }}">Sign in</a>
+        <a class="button button-small" href="{{ url_for('auth.register') }}">Create account <span aria-hidden="true">→</span></a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="container flash-region" aria-live="polite">
+      {% for category, message in messages %}
+      <div class="notice notice-{{ category }}" role="status"><span class="notice-dot" aria-hidden="true"></span>{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endwith %}
+
+  <main id="main" tabindex="-1">{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">Books, Books &amp; Books <span>Online Book Store</span></span>
+      <span>Good stories. Great company.</span>
+    </div>
+  </footer>
+</body>
+</html>

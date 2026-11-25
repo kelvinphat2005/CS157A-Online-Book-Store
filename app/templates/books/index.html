@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}The bookshelves{% endblock %}
+{% block content %}
+<section class="container account-page">
+  <p class="eyebrow">SOMETHING GOOD IS TAKING SHAPE</p>
+  <h1>The bookshelves</h1>
+  <div class="empty-state"><span class="empty-icon" aria-hidden="true">✧</span><h2>Making room for good stories.</h2><p>Our book collection is coming soon. In the meantime, make yourself at home.</p><a class="button" href="{{ url_for('index') }}">Back home <span aria-hidden="true">→</span></a></div>
+</section>
+{% endblock %}
