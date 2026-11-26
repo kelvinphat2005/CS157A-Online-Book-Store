@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Page not found{% endblock %}
+{% block content %}
+<section class="container account-page narrow-page">
+  <p class="eyebrow">404 / PAGE NOT FOUND</p>
+  <h1>This page<br>isn't on our shelves.</h1>
+  <p class="page-intro">The page you're looking for doesn't exist or is no longer available.</p>
+  <div class="hero-actions"><a class="button" href="{{ url_for('books.index') }}">Browse books <span aria-hidden="true">→</span></a><a class="text-link" href="{{ url_for('index') }}">Back home</a></div>
+</section>
+{% endblock %}

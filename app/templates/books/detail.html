@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% from "books/_macros.html" import stock_label, rating_label, price %}
+{% block title %}{{ book.title if book else "Book unavailable" }}{% endblock %}
+{% block content %}
+<section class="container account-page">
+  <a class="back-link" href="{{ url_for('books.index') }}"><span aria-hidden="true">←</span> All books</a>
+
+  {% if unavailable %}
+  <div class="empty-state"><span class="empty-icon" aria-hidden="true">✧</span><h2>This page is resting.</h2><p>We couldn't load this book right now. Please try again shortly.</p></div>
+  {% else %}
+  <article class="book-detail">
+    <p class="eyebrow">{{ book.author }}</p>
+    <h1>{{ book.title }}</h1>
+    <div class="book-detail-meta">
+      <span class="book-price">{{ price(book.price) }}</span>
+      {{ stock_label(book.stock) }}
+      {{ rating_label(book.avg_rating, reviews|length) }}
+    </div>
+    {% if book.summary %}<p class="book-summary">{{ book.summary }}</p>{% endif %}
+    {% if book.publisher %}<p class="book-publisher">Published by {{ book.publisher }}</p>{% endif %}
+  </article>
+
+  <section class="reviews" aria-labelledby="reviews-heading">
+    <h2 id="reviews-heading">Reader reviews</h2>
+    {% if reviews %}
+    <ul class="review-list">
+      {% for review in reviews %}
+      <li class="review">
+        <div class="review-head">
+          <span class="rating" aria-label="{{ review.rating }} out of 5 stars"><span class="rating-star" aria-hidden="true">{{ "★" * review.rating }}</span><span class="rating-empty" aria-hidden="true">{{ "★" * (5 - review.rating) }}</span></span>
+          <span class="review-author">{{ review.reviewer }}</span>
+        </div>
+        <p>{{ review.review_text }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="page-intro">No one has reviewed this book yet.</p>
+    {% endif %}
+  </section>
+  {% endif %}
+</section>
+{% endblock %}
