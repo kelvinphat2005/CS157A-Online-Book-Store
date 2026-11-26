@@ -31,6 +31,9 @@ class TestCursor:
         row = self.raw.fetchone()
         return dict(row) if row is not None else None
 
+    def fetchall(self):
+        return [dict(row) for row in self.raw.fetchall()]
+
     def close(self):
         self.closed = True
         self.raw.close()
@@ -85,6 +88,31 @@ def database(tmp_path, password_hash):
             "INSERT INTO Members(name,email,password_hash,role) VALUES (?,?,?,?)",
             [("Customer Reader", "customer@example.test", password_hash, "customer"),
              ("Staff Reader", "admin@example.test", password_hash, "admin")],
+        )
+        # Catalog tables mirror Schema.sql closely enough for the books pages.
+        connection.executescript(
+            """
+            CREATE TABLE Authors(author_id INTEGER PRIMARY KEY, name TEXT NOT NULL);
+            CREATE TABLE Books(
+                book_id INTEGER PRIMARY KEY, title TEXT NOT NULL, author_id INTEGER NOT NULL,
+                publisher TEXT, summary TEXT, stock INTEGER NOT NULL DEFAULT 0,
+                is_active BOOLEAN NOT NULL DEFAULT TRUE, price NUMERIC NOT NULL
+            );
+            CREATE TABLE Reviews(
+                review_id INTEGER PRIMARY KEY, book_id INTEGER NOT NULL,
+                member_id INTEGER NOT NULL, rating INTEGER NOT NULL, review_text TEXT NOT NULL
+            );
+            INSERT INTO Authors VALUES (1, 'Ada Writer'), (2, 'Ben Author');
+            INSERT INTO Books VALUES
+                (1, 'Garden Paths', 1, 'Leaf Press', 'A walk through gardens.', 20, TRUE, 12.50),
+                (2, 'Ocean Notes', 2, 'Tide House', 'Stories from the sea.', 3, TRUE, 30.00),
+                (3, 'Hidden Draft', 1, 'Leaf Press', 'Not for sale yet.', 9, FALSE, 5.00),
+                (4, '100% Fiction_Club', 2, NULL, NULL, 0, TRUE, 8.99);
+            INSERT INTO Reviews VALUES
+                (1, 1, 1, 5, 'Lovely and calm.'),
+                (2, 1, 2, 4, 'A pleasant read.'),
+                (3, 2, 1, 2, 'Too <b>salty</b> for me.');
+            """
         )
     return path
 

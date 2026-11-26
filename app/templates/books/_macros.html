@@ -1,0 +1,12 @@
+{% macro stock_label(stock) -%}
+{% if stock <= 0 %}<span class="stock stock-out">Out of stock</span>
+{% elif stock <= 5 %}<span class="stock stock-low">Only {{ stock }} left</span>
+{% else %}<span class="stock">In stock</span>{% endif %}
+{%- endmacro %}
+
+{% macro rating_label(avg_rating, review_count) -%}
+{% if review_count %}<span class="rating"><span class="rating-star" aria-hidden="true">★</span> {{ "%.1f"|format(avg_rating|float) }} <span class="rating-count">({{ review_count }} {{ "review" if review_count == 1 else "reviews" }})</span></span>
+{% else %}<span class="rating rating-none">No reviews yet</span>{% endif %}
+{%- endmacro %}
+
+{% macro price(value) -%}${{ "%.2f"|format(value|float) }}{%- endmacro %}

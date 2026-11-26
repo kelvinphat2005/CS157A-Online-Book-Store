@@ -15,7 +15,6 @@ from conftest import PASSWORD, register, sign_in, token
     ("/", "Every good story"),
     ("/auth/login", "Welcome back."),
     ("/auth/register", "A fresh chapter."),
-    ("/books/", "The bookshelves"),
 ])
 def test_public_pages_render_without_database(client, app, path, heading):
     response = client.get(path)

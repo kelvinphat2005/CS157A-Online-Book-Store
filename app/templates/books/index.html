@@ -1,9 +1,46 @@
 {% extends "base.html" %}
+{% from "books/_macros.html" import stock_label, rating_label, price %}
 {% block title %}The bookshelves{% endblock %}
 {% block content %}
 <section class="container account-page">
-  <p class="eyebrow">SOMETHING GOOD IS TAKING SHAPE</p>
+  <p class="eyebrow">BROWSE THE COLLECTION</p>
   <h1>The bookshelves</h1>
-  <div class="empty-state"><span class="empty-icon" aria-hidden="true">✧</span><h2>Making room for good stories.</h2><p>Our book collection is coming soon. In the meantime, make yourself at home.</p><a class="button" href="{{ url_for('index') }}">Back home <span aria-hidden="true">→</span></a></div>
+  <p class="page-intro">Familiar favorites and fresh beginnings. Search by title or author.</p>
+
+  <form class="catalog-tools" method="get" action="{{ url_for('books.index') }}" role="search">
+    <label class="visually-hidden" for="catalog-q">Search books</label>
+    <input id="catalog-q" type="search" name="q" value="{{ q }}" maxlength="100" placeholder="Search by title or author">
+    <label class="visually-hidden" for="catalog-sort">Sort by</label>
+    <select id="catalog-sort" name="sort">
+      {% for key, option in sorts.items() %}
+      <option value="{{ key }}" {% if key == sort %}selected{% endif %}>{{ option[0] }}</option>
+      {% endfor %}
+    </select>
+    <button class="button button-small" type="submit">Search</button>
+    {% if q %}<a class="text-link" href="{{ url_for('books.index', sort=sort) }}">Clear search</a>{% endif %}
+  </form>
+
+  {% if unavailable %}
+  <div class="empty-state"><span class="empty-icon" aria-hidden="true">✧</span><h2>The shelves are resting.</h2><p>We couldn't load the catalog right now. Please try again shortly.</p></div>
+  {% elif not books %}
+  <div class="empty-state"><span class="empty-icon" aria-hidden="true">✧</span>
+    {% if q %}<h2>No books match &ldquo;{{ q }}&rdquo;.</h2><p>Try a different title or author name.</p><a class="button" href="{{ url_for('books.index') }}">See all books <span aria-hidden="true">→</span></a>
+    {% else %}<h2>Making room for good stories.</h2><p>There are no books on the shelves yet.</p>{% endif %}
+  </div>
+  {% else %}
+  <p class="catalog-count">{{ books|length }} {{ "book" if books|length == 1 else "books" }}{% if q %} matching &ldquo;{{ q }}&rdquo;{% endif %}</p>
+  <ul class="book-grid">
+    {% for book in books %}
+    <li>
+      <a class="book-card" href="{{ url_for('books.detail', book_id=book.book_id) }}">
+        <h2 class="book-card-title">{{ book.title }}</h2>
+        <p class="book-card-author">{{ book.author }}</p>
+        {{ rating_label(book.avg_rating, book.review_count) }}
+        <div class="book-card-footer"><span class="book-price">{{ price(book.price) }}</span>{{ stock_label(book.stock) }}</div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 </section>
 {% endblock %}
