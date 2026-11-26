@@ -50,3 +50,24 @@ INSERT INTO Members (member_id, name, email, password_hash, role) VALUES
 (13, 'Lamin Yamal', 'lamin.yamal@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
 (14, 'Gerard Martin', 'gerard.martin@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer'),
 (15, 'Pau Cubarsi', 'pau.cubarsi@example.com', 'scrypt:32768:8:1$OSjmPBDpAECVRjg9$c12fc321fd87ec41800d7e7b302fb67d2ea4bff69c50c0a6f4947aee66622ccf88481a9c9318216ad2166d9c0077094381283563771844d2e1710bfba2caf1e9', 'customer');
+
+
+INSERT INTO Orders (order_id, member_id, fulfillment_type, fulfillment_address, total_cost, status) VALUES
+(1, 4, 'delivery', '123 Main St, San Jose, CA 95112', 21.90, 'delivered'),
+(2, 5, 'pickup', 'Store pickup at 1 Washington Sq, San Jose, CA 95192', 13.95, 'picked_up'),
+(3, 6, 'delivery', '789 Pine Rd, Sunnyvale, CA 94086', 21.95, 'shipped'),
+(4, 7, 'delivery', '12 Elm St, Cupertino, CA 95014', 37.95, 'pending'),
+(5, 8, 'pickup', 'Store pickup at 1 Washington Sq, San Jose, CA 95192', 39.54, 'picked_up'),
+(6, 9, 'delivery', '300 Market St, San Francisco, CA 94105', 23.00, 'delivered'),
+(7, 10, 'delivery', '56 Cedar Ln, Milpitas, CA 95035', 39.57, 'shipped'),
+(8, 11, 'pickup', 'Store pickup at 1 Washington Sq, San Jose, CA 95192', 25.97, 'pending'),
+(9, 12, 'delivery', '901 Lake Dr, Fremont, CA 94536', 25.90, 'delivered'),
+(10, 13, 'delivery', '22 Hill St, Palo Alto, CA 94301', 34.95, 'cancelled'),
+(11, 14, 'pickup', 'Store pickup at 1 Washington Sq, San Jose, CA 95192', 30.00, 'picked_up'),
+(12, 15, 'delivery', '18 River Rd, Mountain View, CA 94040', 22.95, 'shipped'),
+(13, 4, 'delivery','123 Main St, San Jose, CA 95112', 14.95, 'delivered'),
+(14, 5, 'delivery', '45 Oak Ave, Santa Clara, CA 95050', 48.82, 'pending'),
+(15, 6, 'pickup', 'Store pickup at 1 Washington Sq, San Jose, CA 95192', 76.94, 'picked_up');
+
+
+
